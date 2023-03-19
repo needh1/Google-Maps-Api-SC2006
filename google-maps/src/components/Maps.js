@@ -1,10 +1,15 @@
 import React from "react";
-import { useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import {useMemo} from "react";
 
 function Maps() {
-  const {} = useLoadScript({
-    googleMapsApiKey: "AIzaSyD-p0kwbAhzpsFvTp5UXJrH0YUlpTsnQzc"
+  const {isLoaded} = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
   });
+
+  if(!isLoaded){
+    return <div>Loading...</div>
+  }
 
   return (
     <div>
@@ -19,7 +24,7 @@ function Maps() {
         <button type="submit" class="btn btn-primary">+</button>
       </div>
       <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.709334497477!2d103.68309621453858!3d1.3509339990147111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da0fa0ce327a9b%3A0x9706832ebc3bb44a!2sNTU%20Hall%20of%20Residence%208%20(Hall%208)!5e0!3m2!1sen!2ssg!4v1679062252751!5m2!1sen!2ssg" width="600" height="450" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.709334497477!2d103.68309621453858!3d1.3509339990147111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da0fa0ce327a9b%3A0x9706832ebc3bb44a!2sNTU%20Hall%20of%20Residence%208%20(Hall%208)!5e0!3m2!1sen!2ssg!4v1679062252751!5m2!1sen!2ssg" width="600" height="450" style={{ border: 1 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   );
